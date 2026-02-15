@@ -147,6 +147,34 @@ Property values can be any of the following data types:
 
 Event property objects that contain array or object values can have an event property payload up to 100&nbsp;KB.
 
+{% alert tip %}
+Everything in this section also applies to [purchase event properties]({{site.baseurl}}/api/objects_filters/purchase_object/#purchase-properties-object).
+{% endalert %}
+
+#### Data type detection and handling {#data-type-handling}
+
+Braze auto-detects the data type of each property value in a similar way to [custom attributes]({{site.baseurl}}/user_guide/data/custom_data/custom_attributes/#custom-attribute-data-types). The detected types are used to determine the type in trigger event property filters, but they don't change how the property values are stored or delivered through Currents.
+
+Keep the following behavior in mind:
+
+- **String-to-time conversion:** Strings that match a recognized time format (such as ISO-8601) are automatically converted to datetime values. This means certain string values can't be expressed as-is in an event property if they resemble a time format.
+- **No type coercion in filters or Liquid:** There is no automatic type conversion when evaluating event property filters. For example, if a trigger filter checks for a property value of `5` (integer), it won't match if the logged value is `"5"` (string). This also applies to Liquid templating and values logged to Currents.
+- **Future timestamps:** The rule that "events with timestamps in the future default to the current time" does not apply to custom event property values.
+- **Arrays:** Properties with the array data type won't have their data reflected in Braze segment filters, but you can use [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/) to display array data in your messaging.
+
+{% alert important %}
+If you change the data type of an event property, any campaign or Canvas filter using that property must be removed and re-added for the filter to work as expected with the new data type.
+{% endalert %}
+
+#### Nested event property handling
+
+[Nested event properties](#nested-objects) (top-level properties that are arrays or objects) go through less sanitization than top-level scalar values:
+
+- Strings are coerced to UTF-8 encoding but are not truncated. They are still converted to datetimes if they match a recognized time format.
+- Keys inside nested objects are not restricted to the same naming rules as top-level properties (for example, leading `$` characters are not removed).
+- Integers are not restricted in range.
+- Floats that are equal to infinity are replaced with `nil`.
+
 You can change the data type of your custom event property, but be aware of the impacts of [changing data types]({{site.baseurl}}/help/help_articles/data/change_custom_data_type/) after data has been collected.
 
 ### Using custom event properties

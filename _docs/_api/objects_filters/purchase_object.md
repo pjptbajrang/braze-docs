@@ -108,6 +108,8 @@ Property values can be any of the following data types:
 
 Event property objects that contain array or object values can have an event property payload of up to 50&nbsp;KB.
 
+For details on how Braze detects and handles property value data types (including auto-conversion, type coercion, and nested property behavior), refer to [Data type detection and handling]({{site.baseurl}}/user_guide/data/custom_data/custom_events/#data-type-handling).
+
 ### Purchase properties
 
 [Purchase properties]({{site.baseurl}}/user_guide/data_and_analytics/custom_data/purchase_events/#purchase-properties) can be used to trigger messages and for personalization using Liquid, also allowing you to segment based on these properties.
