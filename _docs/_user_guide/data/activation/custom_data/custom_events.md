@@ -162,13 +162,9 @@ Keep the following behavior in mind:
 - **Future timestamps:** The rule that "events with timestamps in the future default to the current time" does not apply to custom event property values.
 - **Arrays:** Properties with the array data type won't have their data reflected in Braze segment filters, but you can use [Liquid]({{site.baseurl}}/user_guide/personalization_and_dynamic_content/liquid/) to display array data in your messaging.
 
-{% alert important %}
-If you change the data type of an event property, any campaign or Canvas filter using that property must be removed and re-added for the filter to work as expected with the new data type.
-{% endalert %}
-
 #### Nested event property handling
 
-[Nested event properties](#nested-objects) (top-level properties that are arrays or objects) go through less sanitization than top-level scalar values:
+[Nested event properties](#nested-objects), which are top-level properties that are arrays or objects, go through less sanitization than the scalar values within them:
 
 - Strings are coerced to UTF-8 encoding but are not truncated. They are still converted to datetimes if they match a recognized time format.
 - Keys inside nested objects are not restricted to the same naming rules as top-level properties (for example, leading `$` characters are not removed).
