@@ -13,6 +13,9 @@ guide_featured_list:
 - name: Getting Started
   link: /docs/user_guide/brazeai/operator/getting_started/
   image: /assets/img/braze_icons/book-open-01.svg
+- name: Support Tickets
+  link: /docs/user_guide/brazeai/operator/support_tickets/
+  image: /assets/img/braze_icons/help-circle.svg
 - name: Troubleshooting
   link: /docs/user_guide/brazeai/operator/troubleshooting/
   image: /assets/img/braze_icons/alert-circle.svg

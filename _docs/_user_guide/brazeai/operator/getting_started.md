@@ -106,4 +106,5 @@ At the bottom of each response, use the thumbs up or thumbs down buttons to prov
 
 ## Next steps
 
+- [Support tickets]({{site.baseurl}}/user_guide/brazeai/operator/support_tickets/) - File support tickets directly from Operator
 - [Troubleshooting]({{site.baseurl}}/user_guide/brazeai/operator/troubleshooting/) - Common issues and solutions
